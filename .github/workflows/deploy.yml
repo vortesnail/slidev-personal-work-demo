@@ -1,38 +1,54 @@
-name: Deploy to GitHub Pages
+name: Deploy pages
 
 on:
-  push:
-    branches:
-      - master
   workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
-  # 构建工作
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
         with:
-          persist-credentials: false
-          fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20.19.3
-          cache: npm # 或 pnpm / npm
+          node-version: 'lts/*'
+
+      - name: Setup @antfu/ni
+        run: npm i -g @antfu/ni
+
+      - name: Install dependencies
+        run: nci
+
       - name: Build
-        working-directory: ./
-        run: | 
-          echo '安装依赖'
-          npm install
-          echo '打包项目'
-          npm run build
-          echo '打包完成'
-          ls -a
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.4
+        run: nr build --base /${{github.event.repository.name}}/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - uses: actions/upload-pages-artifact@v3
         with:
-          token: ${{ secrets.ACCESS_TOKEN }}
-          branch: gh-pages
-          folder: dist
+          path: dist
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    name: Deploy
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

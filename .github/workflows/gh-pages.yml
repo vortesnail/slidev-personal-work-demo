@@ -23,7 +23,13 @@ jobs:
           cache: npm # 或 pnpm / npm
       - name: Build
         working-directory: ./
-        run: npm run build
+        run: | 
+          echo '安装依赖'
+          npm install
+          echo '打包项目'
+          npm run build
+          echo '打包完成'
+          ls -a
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:

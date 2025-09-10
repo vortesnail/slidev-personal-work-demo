@@ -3,6 +3,7 @@ theme: default
 title: 陈鑫 - Get笔记 - 个人转正述职
 author: 陈鑫
 aspectRatio: 16/9
+preload: false
 
 # https://sli.dev/features/drawing
 drawings:
@@ -84,6 +85,7 @@ layout: center
     title="功能说明"
     description="一次最多上传10张图片，一键智能转笔记，极大方便用户多图记录"
     :items="[{ text: 'APP 多图上传逻辑实现' }, { text: 'WEB、APP 多图笔记详情页面适配' }]"
+    data="图片笔记条数为 <b>7707</b>，其中多图笔记条数为 <b>1786</b>"
   />
 </div>
 
@@ -121,7 +123,7 @@ layout: center
 <Macbook />
 
 ---
-layout: center
+# layout: center
 ---
 
 # 接下来做什么？
@@ -135,7 +137,7 @@ layout: center
 - 实现「拉新」功能的完整链路
   - APP 入口页面、海报，以及 H5 的页面对接
   - 笔记分享数据埋点和奖励信息追踪
-- Get笔记桌面端 v1.0.0 上线
+- Get笔记桌面端 v1.0.0
   - 编辑和预览笔记的 markdown 样式调整（也有功能增加）
   - 会议录音完整交互实现
   - 网页 AI 助手
@@ -149,4 +151,117 @@ layout: center
 layout: center
 ---
 
-<h1>感谢</h1>
+<OverSea />
+
+---
+layout: center
+class: text-center
+transition: fade
+---
+
+# 如何与 AI 协作的 ?
+
+有了 AI ，等于有了一个助理兼老师
+
+---
+transition: fade
+---
+
+<div class="flex items-center mb-[10px]">
+  <img src="./public/cursor.jpg" class="w-[48px] h-[48px] rounded-[10px]" />
+  <span class="ml-[10px]">Cursor</span>
+</div>
+
+<div class="grid grid-cols-2 gap-x-4">
+  <div v-click>
+
+###### 1. 根据设计图生成初版布局代码
+
+<img src="./public/cursor-1.png" class="mt-[10px] rounded-[10px]" />
+
+<div class="h-[10px]"/>
+
+<div v-click>
+```dart {monaco}
+class InviteNewPage extends StatefulWidget {
+  @override
+  _InviteNewPageState createState() => 
+    _InviteNewPageState();
+}
+
+class _InviteNewPageState extends 
+  State<InviteNewPage> {
+  late InviteInviterStats _mockInviterStats;
+  late InviteInvitee _mockInvitees;
+  late InviteInviterShareInfo _mockShareInfo;
+  ...
+}
+```
+
+</div>
+
+  </div>
+  <div v-click class="flex gap-[4px]">
+    <img src="./public/laxin.png" class="w-[200px] rounded-[10px]" />
+    <img src="./public/origin.png" class="w-[220px] rounded-[10px]" />
+  </div>
+</div>
+
+---
+transition: fade
+---
+
+<div class="flex items-center mb-[10px]">
+  <img src="./public/cursor.jpg" class="w-[48px] h-[48px] rounded-[10px]" />
+  <span class="ml-[10px]">Cursor</span>
+</div>
+
+<div class="grid grid-cols-2 gap-x-4">
+  <div v-click>
+
+###### 2. 生成复杂逻辑代码
+
+<img src="./public/complexcode.png" class="mt-[10px] rounded-[10px]" />
+
+  </div>
+  <div v-click>
+
+###### 3. 代码优化 & 问问题
+
+<img src="./public/ask.png" class="mt-[10px] rounded-[10px]" />
+<img src="./public/refactor.png" class="mt-[10px] rounded-[10px]" />
+  </div>
+</div>
+
+---
+transition: fade
+---
+
+<div class="flex items-center mb-[10px]">
+  <img src="./public/v0.png" class="w-[48px] h-[48px] rounded-[10px]" />
+  <span class="ml-[10px]">V0</span>
+</div>
+
+<div class="grid grid-cols-3 gap-x-4">
+  <div v-click>
+
+###### 生成布局方案
+
+<img src="./public/v0-1.png" class="mt-[10px] rounded-[10px]" />
+
+  </div>
+
+  <div v-click >
+    <img src="./public/v0-2.png" class="w-[280px] rounded-[10px]" />
+  </div>
+
+  <div v-click>
+    <img src="./public/v0-3.png" class="w-[280px] rounded-[10px]" />
+  </div>
+</div>
+
+---
+layout: center
+---
+
+<h1>以上，感谢</h1>

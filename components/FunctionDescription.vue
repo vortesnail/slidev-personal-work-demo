@@ -3,9 +3,11 @@
     <h2 class="title">{{ title }}</h2>
     <p class="description">{{ description }}</p>
     <h3 class="subtitle">{{ subtitle }}</h3>
-    <ul>
+    <ul class="items">
       <li v-for="item in items" class="item" :key="item.id">{{ item.text }}</li>
     </ul>
+    <h3 class="subtitle-2">{{ subtitle2 }}</h3>
+    <p class="data" v-html="data" />
   </div>
 </template>
 
@@ -20,11 +22,15 @@ interface Item {
 const props = withDefaults(defineProps<{
   title?: string;
   subtitle?: string;
+  subtitle2?: string;
+  data?: string;
   description?: string;
   items: Item[];
 }>(), {
   title: '功能说明',
   subtitle: '我做了什么',
+  subtitle2: '相关数据（昨日）',
+  data: '',
   description: '',
   items: () =>[],
 })
@@ -51,10 +57,20 @@ const props = withDefaults(defineProps<{
   margin: 0 0 24px 0;
 }
 
-.subtitle {
+.subtitle,
+.subtitle-2 {
   font-size: 16px;
   margin: 0 0 8px 0;
   font-weight: 500;
+}
+
+.data {
+  font-size: 16px;
+  margin: 0 0 0 0;
+}
+
+.items {
+  margin: 0 0 24px 0;
 }
 
 .item {

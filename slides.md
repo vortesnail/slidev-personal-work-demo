@@ -52,6 +52,7 @@ layout: center
     title="功能说明"
     description="笔记分享功能让信息流动更自由，通过简单操作实现高效传递，告别图片文件传输的繁琐，让信息同步更便利顺畅"
     :items="[{ text: 'APP 内分享功能实现' }, { text: '站外 H5 所有笔记笔记类型分享页面实现' }, { text: 'WEB 首次接入大数据埋点' }]"
+    data="H5 分享页 PV 为 <b>34335</b>，APP 分享按钮点击总次数为 <b>8644</b>"
   />
 </div>
 
@@ -66,6 +67,7 @@ layout: center
     title="功能说明"
     description="每日生成专属自己的日报，复盘前一天记了哪些笔记、关注订阅的博主有哪些更新"
     :items="[{ text: 'APP 端日报卡片和详情开发' }, { text: 'WEB 端完整日报卡片开发' }, { text: '自定义日报链接解析插件' }]"
+    data="订阅日报人数为 <b>2407</b>，查看日报人数为 <b>1260</b>"
   />
   <IphoneDaily class="shrink-[0]"/>
 </div>
